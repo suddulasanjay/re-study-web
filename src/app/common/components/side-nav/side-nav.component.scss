@@ -1,0 +1,20 @@
+.side-nav-container{
+    background-color: rgb(29, 17, 125);
+    height: 100%;
+    color: white;
+    padding: 18px 15px;
+    
+    .nav-items {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        .nav-item{
+            padding: 10px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    }
+}

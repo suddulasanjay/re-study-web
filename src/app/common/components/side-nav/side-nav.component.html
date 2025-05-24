@@ -1,0 +1,16 @@
+@if (sideNavItems?.length) {
+  <div class="side-nav-container">
+    <div class="nav-items">
+      @for (navItem of sideNavItems; let index = $index; track navItem.name) {
+        <div
+          class="nav-item"
+          (click)="!navItem.disabled && navItemClick(navItem)"
+          [class.disabled]="navItem.disabled"
+        >
+          <img src="{{ navItem.icon }}" alt="" />
+          <span>{{ navItem.name }}</span>
+        </div>
+      }
+    </div>
+  </div>
+}

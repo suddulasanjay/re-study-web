@@ -1,0 +1,21 @@
+.app-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .main-content {
+        flex: 1;
+        overflow: auto;
+        position: relative;
+        display: flex;
+
+        .outlet {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: fit-content;
+            height: 100%;
+        }
+    }
+}
