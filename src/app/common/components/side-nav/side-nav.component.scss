@@ -1,9 +1,10 @@
+@use '../../../../scss/variables.scss' as vars;
+
 .side-nav-container{
-    background-color: rgb(29, 17, 125);
+    background-color: vars.$side-nav-bg;
     height: 100%;
-    color: white;
+    color: vars.$side-nav-color;
     padding: 18px 15px;
-    
     .nav-items {
         display: flex;
         flex-direction: column;

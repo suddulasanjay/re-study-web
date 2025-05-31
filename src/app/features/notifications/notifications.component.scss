@@ -1,0 +1,66 @@
+.notifications-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 16px;
+  
+    .badge {
+      background-color: #d1863b;
+      color: white;
+      border-radius: 12px;
+      padding: 2px 8px;
+      font-size: 0.8rem;
+      margin-left: 8px;
+    }
+  
+    .mat-list-item {
+      transition: background-color 0.2s ease;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  
+      &:hover {
+        background-color: #fdf2e9;
+      }
+  
+      &.unread {
+        background-color: #f9f9f9;
+        
+        .mat-list-item-title {
+          font-weight: 500;
+        }
+      }
+  
+      .mat-list-item-icon {
+        &.reminder {
+          color: #d1863b;
+        }
+        &.schedule {
+          color: #3f51b5;
+        }
+        &.system {
+          color: #4caf50;
+        }
+      }
+  
+      .mat-list-item-meta {
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 0.8rem;
+      }
+    }
+  
+    .empty-state {
+      text-align: center;
+      padding: 40px 0;
+      color: rgba(0, 0, 0, 0.5);
+  
+      mat-icon {
+        font-size: 48px;
+        width: 48px;
+        height: 48px;
+        margin-bottom: 16px;
+      }
+  
+      p {
+        margin: 0;
+        font-size: 1.1rem;
+      }
+    }
+  }

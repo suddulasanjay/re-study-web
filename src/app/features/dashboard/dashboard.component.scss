@@ -1,0 +1,170 @@
+// Using your color palette
+$primary-color: #d1863b;
+$accent-color: #7a5a46;
+$light-bg: #fdf2e9;
+$text-color: #7a5a46;
+:host{
+    display: block;
+    flex:1;
+}
+
+.dashboard-container {
+  padding: 1rem;
+  color: $text-color;
+
+  mat-card {
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid lighten($accent-color, 40%);
+    background-color: white;
+
+    &-header {
+      mat-card-title {
+        color: $accent-color;
+        font-weight: 500;
+      }
+
+      mat-card-subtitle {
+        color: lighten($accent-color, 20%);
+      }
+    }
+  }
+
+  .header-card {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    mat-card-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    .stat-card {
+      text-align: center;
+
+      mat-card-title {
+        font-size: 2rem;
+        color: $primary-color;
+        margin-bottom: 0.5rem;
+      }
+
+      mat-progress-bar {
+        margin-top: 1rem;
+        height: 8px;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  .section-card {
+    mat-card-content {
+      padding: 1rem;
+    }
+
+    .subject-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid lighten($accent-color, 50%);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .subject-info {
+        flex: 1;
+
+        h3 {
+          margin: 0 0 0.5rem 0;
+          font-size: 1rem;
+        }
+
+        .progress-container {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+
+          mat-progress-bar {
+            flex: 1;
+            height: 6px;
+          }
+
+          .progress-value {
+            font-size: 0.8rem;
+            color: lighten($accent-color, 20%);
+          }
+        }
+      }
+
+      mat-icon {
+        color: $primary-color;
+
+        &.up {
+          color: #4caf50; // Green for positive trend
+        }
+
+        &.down {
+          color: #f44336; // Red for negative trend
+        }
+      }
+    }
+  }
+
+  .columns-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    .column-card {
+      .activity-item, .pattern-item {
+        display: flex;
+        gap: 1rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid lighten($accent-color, 50%);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        mat-icon {
+          color: $primary-color;
+
+          &.completed {
+            color: #4caf50;
+          }
+
+          &.reviewed {
+            color: #2196f3;
+          }
+        }
+
+        h4 {
+          margin: 0;
+          font-size: 0.95rem;
+        }
+
+        p {
+          margin: 0.25rem 0 0;
+          font-size: 0.8rem;
+          color: lighten($accent-color, 20%);
+        }
+      }
+    }
+  }
+
+  mat-divider {
+    margin: 1.5rem 0;
+    border-top-color: lighten($accent-color, 40%);
+  }
+}

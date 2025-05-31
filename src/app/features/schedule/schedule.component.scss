@@ -1,0 +1,96 @@
+// Using your color palette
+$primary-color: #d1863b;
+$accent-color: #7a5a46;
+$light-bg: #fdf2e9;
+$text-color: #7a5a46;
+
+.schedule-container {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: $text-color;
+
+  .search-bar {
+    padding: 1rem;
+  
+    .full-width {
+      width: 100%;
+    }
+  
+    .search-input {
+      background-color: #fff;
+      border-radius: 8px;
+  
+      input {
+        padding: 10px;
+        font-size: 16px;
+      }
+  
+      mat-icon {
+        color: #666;
+      }
+    }
+  }
+  
+  .section {
+    margin-top: 2rem;
+  
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 1rem 1rem;
+  
+      h3 {
+        margin: 0;
+        color: #333;
+        font-size: 1.25rem;
+      }
+  
+      button {
+        font-weight: 500;
+        border-radius: 6px;
+      }
+    }
+  }
+  
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .square-card {
+    aspect-ratio: 1 / 1;
+    background: #fefefe;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease-in-out;
+    border: 1px solid #e0e0e0;
+  
+    img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+    }
+  
+    .label {
+      font-size: 0.95rem;
+      text-align: center;
+      color: #333;
+      font-weight: 500;
+    }
+  
+    &:hover {
+      background: #f0f8ff;
+      transform: scale(1.03);
+    }
+  }  
+}

@@ -1,0 +1,140 @@
+@use '../../../scss/variables.scss' as *;
+
+:host{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+
+    .home-container{
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        // background-color: $side-nav-background-color;
+        // color: $side-nav-color;
+        .mat-card {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+          }
+        
+          .welcome-card {
+            // background-color: $primary-background-color;
+            // color: $white-color;
+        
+            mat-card-header {
+              align-items: center;
+            }
+        
+            mat-card-title {
+              font-size: 1.8rem;
+              font-weight: bold;
+            }
+        
+            mat-card-subtitle {
+              font-size: 1rem;
+              opacity: 0.9;
+            }
+          }
+        
+          .concepts-card {
+            background-color: $white-color;
+            padding: 1rem;
+        
+            .concept-item {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 1rem 0;
+        
+              .concept-info {
+                h3 {
+                  margin: 0;
+                  font-size: 1.2rem;
+                  color: #444;
+                }
+        
+                .subject-meta {
+                  font-size: 0.9rem;
+                  color: #666;
+        
+                  .subject-badge {
+                    background-color: $primary-background-color;
+                    color: $white-color;
+                    padding: 0.2rem 0.5rem;
+                    border-radius: 6px;
+                    font-size: 0.75rem;
+                    margin-right: 0.5rem;
+                  }
+        
+                  .duration {
+                    color: #888;
+                  }
+                }
+              }
+        
+              .start-btn {
+                min-width: 100px;
+                background-color: $primary-background-color;
+                color: $white-color;
+        
+                mat-icon {
+                  margin-right: 4px;
+                }
+              }
+            }
+        
+            .concept-divider {
+              margin: 1rem 0;
+            }
+        
+            .view-all {
+              display: flex;
+              align-items: center;
+              font-weight: 500;
+              color: $primary-background-color;
+        
+              mat-icon {
+                margin-right: 5px;
+              }
+            }
+          }
+        
+          .quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        
+            .action-button {
+              width: 200px;
+              background-color: $primary-background-color;
+              color: $white-color;
+        
+              mat-icon {
+                margin-right: 0.5rem;
+              }
+            }
+          }
+        
+          .reminder-card {
+            background-color: #fff8e1;
+            color: #5d4037;
+        
+            mat-card-header {
+              align-items: center;
+            }
+        
+            mat-icon {
+              background-color: $primary-background-color;
+              color: $white-color;
+              border-radius: 50%;
+              padding: 0.4rem;
+            }
+        
+            mat-card-content {
+              font-style: italic;
+              padding-top: 0.5rem;
+            }
+          }
+    }
+}

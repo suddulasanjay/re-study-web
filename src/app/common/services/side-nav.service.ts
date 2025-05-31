@@ -34,6 +34,18 @@ export class SideNavService {
                 disabled: false
             },
             {
+              name: 'Schedule',
+              icon: 'assets/icons/icon-schedule.svg',
+              route: ['/schedule'],
+              disabled: false
+            },
+            {
+              name: 'Notifications',
+              icon: 'assets/icons/icon-notification.svg',
+              route: ['/notifications'],
+              disabled: false
+            },
+            {
                 name: 'Settings',
                 icon: 'assets/icons/icon-settings.svg',
                 route: ['/settings'],

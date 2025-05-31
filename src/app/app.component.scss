@@ -13,9 +13,9 @@
         .outlet {
             display: flex;
             flex-direction: column;
-            flex: 1;
-            min-height: fit-content;
             height: 100%;
+            overflow: auto;
+            flex: 1;
         }
     }
 }

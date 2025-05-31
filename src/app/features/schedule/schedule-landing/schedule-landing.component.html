@@ -1,0 +1,60 @@
+<div class="schedule-landing-container">
+  <!-- Search Bar -->
+<div class="search-bar">
+    <mat-form-field appearance="outline" class="search-input full-width">
+      <mat-label>Search for subjects, categories or concepts</mat-label>
+      <input matInput [(ngModel)]="searchTerm" />
+      <button *ngIf="searchTerm" matSuffix mat-icon-button (click)="searchTerm=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  
+  <!-- Subjects Section -->
+  <section class="section">
+    <div class="section-header">
+      <h3>📚 Subjects</h3>
+      <button mat-flat-button color="primary" (click)="createSubject()">
+        <mat-icon>add</mat-icon> Create New
+      </button>
+    </div>
+    <div class="card-grid">
+      <div class="square-card" *ngFor="let subject of subjects" (click)="goToSubject(subject.id)">
+        <img [src]="getImageUrl('subjects', subject.name)" (error)="handleImageError($event, 'categories')" alt="{{ subject.name }}" />
+        <div class="label">{{ subject.name }}</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Categories Section -->
+  <section class="section">
+    <div class="section-header">
+      <h3>📂 Categories</h3>
+      <button mat-flat-button color="primary" (click)="createCategory()">
+        <mat-icon>add</mat-icon> Create New
+      </button>
+    </div>
+    <div class="card-grid">
+      <div class="square-card" *ngFor="let category of categories" (click)="goToCategory(category.id)" >
+        <img [src]="getImageUrl('categories', category.name)" (error)="handleImageError($event, 'categories')" alt="{{ category.name }}" />
+        <div class="label">{{ category.name }}</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Concepts Section -->
+  <section class="section">
+    <div class="section-header">
+      <h3>🧠 Concepts</h3>
+      <button mat-flat-button color="primary" (click)="createConcept()">
+        <mat-icon>add</mat-icon> Create New
+      </button>
+    </div>
+    <div class="card-grid">
+      <div class="square-card" *ngFor="let concept of concepts" (click)="goToConcept(concept.id)">
+        <img [src]="getImageUrl('concepts', concept.name)" (error)="handleImageError($event, 'categories')" alt="{{ concept.name }}" />
+        <div class="label">{{ concept.name }}</div>
+      </div>
+    </div>
+  </section>
+</div>

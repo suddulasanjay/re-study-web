@@ -1,0 +1,17 @@
+<div class="date-picker-container">
+  <mat-form-field>
+    <mat-label>{{label}}</mat-label>
+    <input 
+    class="date-input"
+      matInput
+      [matDatepicker]="picker" 
+      [value]="value"
+      (dateChange)="emitValue($event.value)"
+      [disabled]="disabled"
+    >
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+

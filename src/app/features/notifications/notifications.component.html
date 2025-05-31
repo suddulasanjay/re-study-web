@@ -1,0 +1,45 @@
+<div class="notifications-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>notifications</mat-icon>
+        Notifications
+        <span class="badge" *ngIf="unreadCount > 0">{{ unreadCount }}</span>
+      </mat-card-title>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="markAllAsRead()">
+          <mat-icon>done_all</mat-icon>
+          Mark all as read
+        </button>
+      </mat-menu>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let notification of notifications" 
+                      [class.unread]="!notification.read"
+                      (click)="markAsRead(notification.id)">
+          <mat-icon matListItemIcon [class.reminder]="notification.type === 'reminder'"
+                                  [class.schedule]="notification.type === 'schedule'"
+                                  [class.system]="notification.type === 'system'">
+            {{ notification.type === 'reminder' ? 'notification_important' : 
+               notification.type === 'schedule' ? 'schedule' : 'info' }}
+          </mat-icon>
+          <div matListItemTitle>{{ notification.title }}</div>
+          <div matListItemLine>{{ notification.message }}</div>
+          <div matListItemMeta>{{ notification.time }}</div>
+          <button mat-icon-button (click)="deleteNotification(notification.id); $event.stopPropagation()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-list-item>
+        
+        <div *ngIf="notifications.length === 0" class="empty-state">
+          <mat-icon>notifications_off</mat-icon>
+          <p>No notifications yet</p>
+        </div>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

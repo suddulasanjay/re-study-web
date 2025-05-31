@@ -1,22 +1,37 @@
+@use '../../../../scss/variables' as vars; 
+
 .header-container{
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
     align-items: center;
-    border-bottom: #633131 1px solid;
+    background-color: vars.$primary-background-color;
+    color: vars.$white-color;
+    border-bottom: #0e0d0d 1px solid;
     .org-logo{
         display: flex;
         gap: 10px;
         align-items: center;
         img {
-            height: 40px;
+            height: 45px;
+        }
+        .org-name{
+            font-size: 28px;
         }
     }
 
     .user-actions{
+        display: flex;
+        gap: 15px;
         .sign-in{
-            color: #7f513a;
-            border: 1px solid #c46b6b;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color:vars.$primary-background-color;
+        }
+        .sign-up{
+            padding: 10px 15px;
+            border-radius: 5px;
+            color:vars.$primary-background-color;
         }
     }
 }
