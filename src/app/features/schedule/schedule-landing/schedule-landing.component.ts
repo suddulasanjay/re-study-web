@@ -11,6 +11,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { Router } from '@angular/router';
 import { SubjectService } from '../../../shared/services/subject.service';
+import { CategoryService } from '../../../shared/services/category.service';
+import { ConceptService } from '../../../shared/services/concept.service';
 
 @Component({
   selector: 'app-schedule-landing',
@@ -26,6 +28,8 @@ import { SubjectService } from '../../../shared/services/subject.service';
 })
 export class ScheduleLandingComponent{
   private _subjectService = inject(SubjectService);
+  private _categoryService = inject(CategoryService);
+  private _conceptService = inject(ConceptService);
   private RANDOM_IMAGE_COUNT: Record<'subjects' | 'categories' | 'concepts', number> = {
     subjects: 0,       // No random images in subjects, only named
     categories: 7,
@@ -55,8 +59,26 @@ export class ScheduleLandingComponent{
   constructor(private router: Router) {}
 
   ngOnInit() {
+    this.getSubjects();
+    this.getCategories();
+    this.getConcepts();
+  }
+
+  getSubjects() {
     this._subjectService.getSubjects().subscribe(subjects => {
       this.subjects = subjects.map(subject => ({ id : subject.id, name: subject.name, icon: subject.name.toLowerCase() }));
+    })
+  }
+
+  getCategories() {
+    this._categoryService.getCategories().subscribe(categories => {
+      this.categories = categories.map(category => ({ id : category.id, name: category.name, subjectId: category.subjectId ?? 0 }));
+    })
+  }
+
+  getConcepts() {
+    this._conceptService.getConcepts().subscribe(concepts => {
+      this.concepts = concepts.map(concept => ({ id : concept.id, name: concept.name, categoryId: concept.categoryId ?? 0 }));
     })
   }
 
@@ -73,15 +95,15 @@ export class ScheduleLandingComponent{
   }
 
   createSubject() {
-    this.router.navigate(['/schedule/subject']);
+    this.router.navigate(['/schedule/subject/add']);
   }
 
   createCategory() {
-    this.router.navigate(['/schedule/category']);
+    this.router.navigate(['/schedule/category/add']);
   }
 
   createConcept() {
-    this.router.navigate(['/schedule/concept']);
+    this.router.navigate(['/schedule/concept/add']);
   }
 
   matchesSearch(text: string): boolean {

@@ -8,6 +8,7 @@
       [value]="value"
       (dateChange)="emitValue($event.value)"
       [disabled]="disabled"
+      [required]="required"
     >
     <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>

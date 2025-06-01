@@ -29,6 +29,11 @@ export const routes: Routes = [
       children : scheduleRoutes
     },
     {
+        path: appRoute.learn+'/:id',
+    loadComponent: () =>
+      import('./features/study-session/study-session.component').then((m) => m.StudySessionComponent),
+    },
+    {
         path: appRoute.notifications,
     loadComponent: () =>
       import('./features/notifications/notifications.component').then((m) => m.NotificationsComponent),

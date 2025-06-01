@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormGroup,FormControl, ReactiveFormsModule } from '@angular/forms';
 import { DatePickerComponent } from '../../common/components/form-controls/date-picker/date-picker.component';
 import { CommonModule } from '@angular/common';
@@ -8,6 +8,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatListModule } from '@angular/material/list';
+import { AgendaDto } from '../../shared/models/response-models/home.response-model';
+import { ConceptStatus } from '../../shared/utilities/concept-status.enum';
+import { Router } from '@angular/router';
+import { HomeService } from '../../shared/services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -21,45 +25,28 @@ import { MatListModule } from '@angular/material/list';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-planWeek() {
-throw new Error('Method not implemented.');
-}
-addNewConcept() {
-throw new Error('Method not implemented.');
-}
+  private _homeService = inject(HomeService);
+  private _router = inject(Router);
+
+  conceptStatus = ConceptStatus;
   userName = 'Alex';
   motivationText = 'Stay organized. Study smart.';
-
-  // Progress Data
-  completedCount = 3;
-  totalCount = 5;
-
-  // Concepts Data
-  todaysConcepts = [
-    { 
-      name: 'Linked Lists', 
-      subject: 'DSA', 
-      status: 'in-progress',
-      icon: 'hourglass_top',
-      duration: '1hr 30min'
-    },
-    { 
-      name: 'Atomic Habits Chapter 3', 
-      subject: 'Reading', 
-      status: 'completed',
-      icon: 'check_circle',
-      duration: '30min'
-    },
-    { 
-      name: 'SQL Joins Practice', 
-      subject: 'DBMS', 
-      status: 'in-progress',
-      icon: 'hourglass_top',
-      duration: '45min'
-    }
-  ];
-
-  // Reminder Data
+  todaysConcepts : AgendaDto[] = [];
   reminderText = 'Next revision for Trees in 2 days';
+  ngOnInit() {
+    this._homeService.getAgenda().subscribe(data => {
+      this.todaysConcepts = data;
+    })
+  }
+  planWeek() {
+    throw new Error('Method not implemented.');
+  }
+  addNewConcept() {
+    this._router.navigate(['schedule/concept/add']);
+  }
+
+  goToStudySession(id  : number) {
+    this._router.navigate([`learn/${id}`]);
+  }
 
 }

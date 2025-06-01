@@ -7,3 +7,17 @@ export interface ConceptDto {
     repetitionGap: number;
     duration: number;
   }
+
+  export interface StudySessionDto {
+    conceptId: number;
+    conceptName: string;
+    conceptDescription ?: string;
+    categoryId: number;
+    categoryName: string;
+    subjectId?: number;
+    subjectName?: string;
+    remainingDuration: number;
+    conceptStateId: number;
+    comment?: string;
+  }
+  

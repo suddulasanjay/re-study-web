@@ -1,0 +1,20 @@
+<div class="concept-list-container">
+  <app-table
+    [columns]="columns"
+    [dataSource]="concepts"
+    (rowClicked)="onRowClicked($event)">
+  </app-table>
+
+  <app-paginator
+    [pageSizeOptions]="pageSizeOptions"
+    [totalCount]="totalCount"
+    [pageNumber]="pageNumber"
+    [pageSize]="pageSize"
+    (pageChange)="onPageChange($event)">
+  </app-paginator>
+
+  <ng-template #scheduledDateTemplate let-element>
+    {{ element.scheduledDate | date: 'yyyy-MM-dd' }}
+  </ng-template>  
+
+</div>

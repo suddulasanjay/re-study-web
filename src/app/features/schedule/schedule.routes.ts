@@ -1,10 +1,11 @@
 import { Routes } from "@angular/router";
-import { appRoute } from "../../app-route.constants";
-import { ScheduleComponent } from "./schedule.component";
-import { CategoryComponent } from "./category/category.component";
-import { ConceptComponent } from "./concept/concept.component";
-import { SubjectComponent } from "./subject/subject.component";
+import { CategoryListComponent } from "./category/category-list.component";
+import { ConceptListComponent } from "./concept/concept-list.component";
+import { SubjectListComponent } from "./subject/subject-list.component";
 import { ScheduleLandingComponent } from "./schedule-landing/schedule-landing.component";
+import { ManageSubjectComponent } from "./subject/manage-subject/manage-subject.component";
+import { ManageCategoryComponent } from "./category/manage-category/manage-category.component";
+import { ManageConceptComponent } from "./concept/manage-concept/manage-concept.component";
 
 export const scheduleRoute = {
     subject: 'subject',
@@ -20,26 +21,26 @@ export const scheduleRoutes: Routes = [
     },
     {
       path: scheduleRoute.subject,
-      component: SubjectComponent,
+      component: SubjectListComponent,
     },
     {
       path: scheduleRoute.subject + '/:id',
-      component: SubjectComponent,
+      component: ManageSubjectComponent,
     },
     {
       path: scheduleRoute.category,
-      component: CategoryComponent,
+      component: CategoryListComponent,
     },
     {
       path: scheduleRoute.category + '/:id',
-      component: CategoryComponent,
+      component: ManageCategoryComponent,
     },
     {
       path: scheduleRoute.concept,
-      component: ConceptComponent,
+      component: ConceptListComponent,
     },
     {
       path: scheduleRoute.concept + '/:id',
-      component: ConceptComponent,
+      component: ManageConceptComponent,
     },
   ];

@@ -1,0 +1,69 @@
+<div class="table-wrapper" [style]="{ height: height + 'px' }">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    (matSortChange)="sortChange.emit($event)"
+  >
+    @for (column of tableColumns; track $index) {
+    <ng-container matColumnDef="{{ column.name }}">
+      <th
+        mat-header-cell
+        *matHeaderCellDef=""
+        mat-sort-header="{{ column.sort ? '' : null }}"
+      >
+        <ng-container
+          *ngTemplateOutlet="headerCellTemplate; context: { $implicit: column }"
+        ></ng-container>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <div [ngClass]="column.dataCellClass">
+          @if (column.cellTemplate) {
+          <ng-container
+            *ngTemplateOutlet="column.cellTemplate; context: { $implicit: element }"
+          ></ng-container>
+          } @else {
+          {{ element[column.prop] }}
+          }
+        </div>
+      </td>
+    </ng-container>
+    }
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+    <tr class="clickable-row" mat-row *matRowDef="let row; columns: columnsToDisplay" (click)="rowClicked.emit(row)"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" [colSpan]="columnsToDisplay.length">
+        @if (!showLoader) {
+        <div [style]="{ textAlign: 'center', padding: '20px' }">No Data</div>
+        }
+      </td>
+    </tr>
+  </table>
+  <app-spinner [showLoader]="showLoader"></app-spinner>
+</div>
+
+@if (pageSizeOptions.length) {
+<div class="paginator-wrapper">
+  @if (tableActions) {
+  <div class="table-actions">
+    <ng-container *ngTemplateOutlet="tableActions"></ng-container>
+  </div>
+  }
+  <app-paginator
+    [pageSizeOptions]="pageSizeOptions"
+    [pageNumber]="pageNumber"
+    [totalCount]="totalCount"
+    [pageSize]="pageSize"
+    (pageChange)="pageChange.emit($event)"
+  ></app-paginator>
+</div>
+}
+
+<ng-template #headerCellTemplate let-column>
+  <div class="column-header" [ngClass]="column.headerCellClass">
+    <div class="column-name">
+      {{ column.name }}
+    </div>
+  </div>
+</ng-template>

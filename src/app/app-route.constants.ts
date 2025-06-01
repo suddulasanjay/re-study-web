@@ -6,5 +6,6 @@ export const appRoute = {
     settings: 'settings',
     schedule: 'schedule',
     dashboard: 'dashboard',
-    notifications: 'notifications'
+    notifications: 'notifications',
+    learn : 'learn'
 }

@@ -1,0 +1,13 @@
+.concept-list-container {
+    padding: 1rem;
+  
+    app-table {
+      margin-bottom: 1.5rem;
+    }
+  
+    app-paginator {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  

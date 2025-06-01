@@ -16,3 +16,10 @@ export interface AddConceptDto {
     repetitionGap: number;
     duration: number;
   }
+
+  export interface AddStudySessionDto {
+    conceptId: number;
+    duration: number;
+    conceptStateId: number;
+    comment: string | null;
+  }

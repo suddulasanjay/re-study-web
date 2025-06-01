@@ -1,0 +1,42 @@
+@use '../../../../../scss/variables.scss' as *;
+.subject-container {
+    padding: 2rem;
+    // background-color: #f9fafb; // Light neutral background
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    // color: #1f2937; // Neutral dark text (gray-800)
+  
+    h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #111827; // Gray-900
+      text-align: center;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      textarea{
+        resize: none;
+      }
+    }
+  
+    .full-width {
+      width: 100%;
+    }
+  
+    .action-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+  
+      button {
+        background-color:$primary-background-color;
+        font-weight: 500;
+      }
+    }
+  }
+  

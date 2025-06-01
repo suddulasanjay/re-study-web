@@ -2,36 +2,52 @@
   <!-- Welcome Header -->
   <h1>Welcome back, {{ userName }}!</h1>
   <p>{{ motivationText }}</p>
-  <!-- <mat-card class="welcome-card">
-    <mat-card-header>
-      <mat-card-title>Welcome back, {{ userName }}!</mat-card-title>
-      <mat-card-subtitle>{{ motivationText }}</mat-card-subtitle>
-    </mat-card-header>
-  </mat-card> -->
-
-  <!-- <mat-divider></mat-divider> -->
-
- <!-- Today's Concepts -->
-<mat-card class="concepts-card">
+ <mat-card class="concepts-card">
   <mat-card-header>
     <mat-card-title><h3>Today's Agenda</h3></mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div *ngFor="let concept of todaysConcepts" class="concept-item">
-      <div class="concept-info">
-        <h3>{{ concept.name }}</h3>
-        <p class="subject-meta">
-          <span class="subject-badge">{{ concept.subject }}</span>
-          <span class="duration">• {{ concept.duration }}</span>
-        </p>
+    <div *ngIf="todaysConcepts.length > 0; else noConcepts">
+      <div *ngFor="let concept of todaysConcepts" class="concept-item">
+        <div class="concept-info">
+          <h3>{{ concept.conceptName }}</h3>
+          <p class="subject-meta">
+            <span class="subject-badge">{{ concept.subjectName }}</span>
+            <span class="duration">• {{ concept.conceptDuration }} min</span>
+          </p>
+        </div>
+
+        <ng-container [ngSwitch]="concept.conceptStatus">
+          <!-- Completed -->
+          <button *ngSwitchCase="conceptStatus.Complete" mat-flat-button color="success" disabled>
+            <mat-icon color="success">check_circle</mat-icon>
+            Completed
+          </button>
+
+          <!-- In Progress -->
+          <button *ngSwitchCase="conceptStatus.InProgress" mat-flat-button color="accent" (click)="goToStudySession(concept.conceptId)">
+            <mat-icon>play_arrow</mat-icon>
+            Resume
+          </button>
+
+          <!-- Not Started (status === 0) -->
+          <button *ngSwitchDefault mat-flat-button color="primary" (click)="goToStudySession(concept.conceptId)">
+            <mat-icon>play_arrow</mat-icon>
+            Start
+          </button>
+        </ng-container>
       </div>
-      <button mat-flat-button color="primary" class="start-btn">
-        <mat-icon>play_arrow</mat-icon>
-        Start
-      </button>
     </div>
+
+    <ng-template #noConcepts>
+      <div class="empty-message">
+        <p>No concepts scheduled for today.</p>
+        <p><strong>Start scheduling a concept in a subject and study today without procrastinating!</strong></p>
+      </div>
+    </ng-template>
   </mat-card-content>
 </mat-card>
+
 
 <!-- Quick Actions -->
 <div class="quick-actions">

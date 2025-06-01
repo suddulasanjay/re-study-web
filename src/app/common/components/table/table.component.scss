@@ -1,0 +1,89 @@
+// Using your color palette
+$primary-color: #d1863b;
+$accent-color: #7a5a46;
+$light-bg: #fdf2e9;
+$text-color: #7a5a46;
+
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+  
+    .table-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow: auto;
+  
+      table {
+        thead {
+          z-index: 1;
+          th {
+            z-index: 100;
+          }
+        }
+  
+        th {
+          padding: 8px;
+          background-color: $primary-color;  // #d1863b
+          color: white;                  // #fdf2e9 (for contrast)
+          z-index: 100;
+        }
+
+        .clickable-row {
+            cursor: pointer;
+          
+            &:hover {
+              background-color: rgba(209, 134, 59, 0.1); // subtle ReStudy hover color
+            }
+          }
+  
+        tr:nth-child(even) {
+          background-color: lighten($accent-color, 50%);  // lighter accent, approx #cbb7a8
+        }
+  
+        tr:nth-child(odd) {
+          background-color: $light-bg;   // #fdf2e9
+        }
+  
+        td {
+          text-align: left;
+        //   color: $text-color;  // #7a5a46
+        }
+  
+        th:first-child {
+          border-top-left-radius: 8px;
+        }
+  
+        th:last-child {
+          border-top-right-radius: 8px;
+        }
+      }
+  
+      .column-header {
+        display: flex;
+        align-items: center;
+        .column-name {
+          width: 100%;
+          z-index: 10;
+          color: white;
+        }
+      }
+    }
+  
+    .paginator-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $light-bg;     // #fdf2e9
+      border: 1px solid $primary-color;  // #d1863b
+  
+      .table-actions {
+        padding: 8px;
+        color: $text-color;            // #7a5a46
+      }
+    }
+  }
+  

@@ -1,0 +1,29 @@
+<div class="subject-container">
+  <div>
+    <button mat-stroked-button color="primary" (click)="goToSubjectList()">
+      Go to Subject List
+    </button>
+  </div>
+  <h2>{{ isEditMode ? 'Edit Subject' : 'Add Subject' }}</h2>
+  <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Subject Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter subject name" />
+      <mat-error *ngIf="subjectForm.get('name')?.hasError('required')">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="3"></textarea>
+    </mat-form-field>
+
+    <div class="action-buttons">
+      <button mat-flat-button color="primary" type="submit">
+        {{ isEditMode ? 'Update' : 'Create' }}
+      </button>
+      <button mat-stroked-button color="warn" [style]="{ background: 'white'}" type="button">Cancel</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,40 @@
+<div class="category-container">
+  <div>
+    <button mat-stroked-button color="primary" (click)="goToCategoryList()">
+      Go to Category List
+    </button>
+  </div>
+
+  <h2>{{ isEditMode ? 'Edit Category' : 'Add Category' }}</h2>
+
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Category Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter category name" />
+      <mat-error *ngIf="categoryForm.get('name')?.hasError('required')">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="3"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Subject</mat-label>
+      <mat-select formControlName="subjectId" >
+        <mat-option *ngFor="let subject of subjects" [value]="subject.id">
+          {{ subject.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="action-buttons">
+      <button mat-flat-button color="primary" type="submit">
+        {{ isEditMode ? 'Update' : 'Create' }}
+      </button>
+      <button mat-stroked-button [style]="{ background: 'white'}" color="warn" type="button">Cancel</button>
+    </div>
+  </form>
+</div>

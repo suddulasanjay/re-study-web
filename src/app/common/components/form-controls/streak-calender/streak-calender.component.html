@@ -1,0 +1,19 @@
+<div class="calendar-container">
+  <div class="calendar-header">
+    <button mat-icon-button (click)="prevMonth()"><mat-icon>chevron_left</mat-icon></button>
+    <h3>{{ currentMonth | date: 'MMMM yyyy' }}</h3>
+    <button mat-icon-button (click)="nextMonth()"><mat-icon>chevron_right</mat-icon></button>
+  </div>
+  <hr>
+  <div class="calendar-grid">
+    <div class="day-name" *ngFor="let d of ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']">{{ d }}</div>
+  
+    <div *ngFor="let day of daysInMonth" class="day-cell"
+         [ngClass]="{'empty': !day, 'active': isActive(day)}">
+      <ng-container *ngIf="day">
+        <div class="day-number" *ngIf="!isActive(day)">{{ day.getDate() }}</div>
+        <div class="icon" *ngIf="isActive(day)">🔥</div>
+      </ng-container>
+    </div>
+  </div>
+</div>

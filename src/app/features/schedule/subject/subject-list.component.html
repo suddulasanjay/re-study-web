@@ -1,0 +1,26 @@
+<div class="subject-list-container">
+  <app-table
+    [columns]="columns"
+    [dataSource]="subjects"
+    (rowClicked)="onRowClicked($event)"
+  ></app-table>
+
+  <app-paginator
+    [pageSizeOptions]="pageSizeOptions"
+    [totalCount]="totalCount"
+    [pageNumber]="pageNumber"
+    [pageSize]="pageSize"
+    (pageChange)="onPageChange($event)"
+  ></app-paginator>
+
+  <ng-template #isPresetTemplate let-element>
+    <div class="preset-container">
+      <mat-icon *ngIf="element.isPreset; else cross" color="primary">check_circle</mat-icon>
+      <ng-template #cross>
+        <mat-icon color="warn">cancel</mat-icon>
+      </ng-template>
+    </div>
+  </ng-template>
+  
+</div>
+

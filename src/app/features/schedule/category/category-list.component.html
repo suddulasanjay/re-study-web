@@ -1,0 +1,15 @@
+<div class="category-list-container">
+  <app-table
+    [columns]="columns"
+    [dataSource]="categories"
+    (rowClicked)="onRowClicked($event)">
+  </app-table>
+
+  <app-paginator
+    [pageSizeOptions]="pageSizeOptions"
+    [totalCount]="totalCount"
+    [pageNumber]="pageNumber"
+    [pageSize]="pageSize"
+    (pageChange)="onPageChange($event)">
+  </app-paginator>
+</div>

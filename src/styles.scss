@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@use './scss/_variables.scss' as *;
 html, body { height: 100%; }
 body { margin: 0; font-family:'Nunito Sans',Roboto, "Helvetica Neue", sans-serif; }
 *,*::before, *::after{
@@ -7,7 +7,55 @@ body { margin: 0; font-family:'Nunito Sans',Roboto, "Helvetica Neue", sans-serif
     margin: 0;
 }
 
-//Global Styles
+// Global Material Form Field Custom Styles
+
+// Remove default background for fields with icon suffix
 .mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
-    background: none;
+    background: none !important;
+  }
+  
+  // Focused text field input color
+  .mdc-text-field--focused {
+    color: $side-nav-color !important; // Define this color variable in your theme if not already
+  }
+  
+  // Background for filled variant (when not disabled)
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: white !important; // Tailwind's "beige" = light amber (#FEF3C7)
+    border-radius: 8px;
+  }
+  
+  // Optional: Override outline color when focused
+  .mat-mdc-form-field.mat-focused .mdc-notched-outline {
+    border-color:  $side-nav-color !important; // Your primary blue
+  }
+  
+  // Optional: Label color
+  .mat-mdc-form-field .mat-mdc-floating-label {
+    color:  $side-nav-color !important; // Tailwind's Gray-500
+  }
+  textarea{
+    resize: none !important;
+  }
+
+  /* For WebKit-based browsers */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f9d990; /* Light blue */
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f5c542; /* Darker on hover */
 }

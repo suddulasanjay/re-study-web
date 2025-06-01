@@ -21,6 +21,7 @@ import { BaseFormControl } from '../base-form-control';
 })
 export class DatePickerComponent extends BaseFormControl<Date> {
   @Input() label: string = 'Select Date';
+  @Input() required: boolean = false;
   constructor() {
     super();
    }
