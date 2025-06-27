@@ -20,7 +20,7 @@ export class AppComponent {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         const url = this._router.url;
-      this.hideSideNav = url === '/welcome';
+        this.hideSideNav = url === '/welcome' || url === '/validate';
       });
   }
 }

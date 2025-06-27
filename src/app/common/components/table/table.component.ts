@@ -19,8 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { SpinnerComponent } from '../../../shared/components/spinner/spinner.component';
 import { PaginatorComponent } from '../../../shared/components/paginator/paginator.component';
+import { SpinnerComponent } from '../spinner/spinner.component';
 
 @Component({
   selector: 'app-table',

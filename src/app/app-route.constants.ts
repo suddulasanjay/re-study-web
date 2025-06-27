@@ -1,5 +1,6 @@
 export const appRoute = {
     welcome : 'welcome',
+    validate : 'validate',
     app: 'app',
     home: 'home',
     about: 'about',
