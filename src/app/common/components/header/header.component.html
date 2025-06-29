@@ -4,7 +4,19 @@
     <h2 class="org-name">ReStudy</h2>
   </div>
   <div class="user-actions">
-    <button mat-raised-button class="sign-in">Sign In</button>
-    <button mat-raised-button class="sign-up">Sign Up</button>
+    <button class="user-profile" mat-button [matMenuTriggerFor]="profileMenu">
+      @if (isLoggedIn) {
+        <mat-icon>account_circle</mat-icon> {{userName}}
+      }
+      @else {
+        {{CreateOrRegister}}
+      }
+    </button>
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>{{isLoggedIn ? 'Logout' : 'Login'}}</span>
+      </button>
+    </mat-menu>
   </div>
 </div>

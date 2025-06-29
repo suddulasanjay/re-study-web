@@ -26,6 +26,6 @@ export const ssoParam = {
   };
 
   export const API = {
-    Token: "/token",
-    Logout: "/logout",
+    Token: 'token',
+    Logout: 'logout',
   };

@@ -51,12 +51,10 @@ export class ManageSubjectComponent{
   }
 
   onSubmit(){
-    console.log(this.subjectForm.value);
+    // console.log(this.subjectForm.value);
   }
 
   goToSubjectList() {
     this._router.navigate(['../'], { relativeTo: this._activeRoute });
   }
-  
-
 }

@@ -59,3 +59,23 @@ body { margin: 0; font-family:'Nunito Sans',Roboto, "Helvetica Neue", sans-serif
 ::-webkit-scrollbar-thumb:hover {
   background: #f5c542; /* Darker on hover */
 }
+
+.mat-mdc-menu-panel {
+  margin: 0 !important;
+}
+
+.mat-mdc-menu-content {
+  padding: 0 !important; /* Remove internal padding */
+}
+
+.mat-mdc-menu-item {
+  min-height: 10px !important;
+  padding: 5px !important;
+  margin: 0 !important;
+  font-size: 14px !important;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: flex-end;
+  border: none !important;
+}

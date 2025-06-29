@@ -1,66 +1,107 @@
+@use '../../../scss/variables' as *;
 .notifications-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 16px;
+  padding: 1rem;
+}
+
+.notifications-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.notifications-icon {
+  color: $primary-background-color;
+}
+
+.badge {
+  background: $side-nav-color;
+  color: white;
+  border-radius: 50%;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.actions {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.notifications-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid #f5f5f5;
   
-    .badge {
-      background-color: #d1863b;
-      color: white;
-      border-radius: 12px;
-      padding: 2px 8px;
-      font-size: 0.8rem;
-      margin-left: 8px;
-    }
+  &:last-child {
+    border-bottom: none;
+  }
   
-    .mat-list-item {
-      transition: background-color 0.2s ease;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  
-      &:hover {
-        background-color: #fdf2e9;
-      }
-  
-      &.unread {
-        background-color: #f9f9f9;
-        
-        .mat-list-item-title {
-          font-weight: 500;
-        }
-      }
-  
-      .mat-list-item-icon {
-        &.reminder {
-          color: #d1863b;
-        }
-        &.schedule {
-          color: #3f51b5;
-        }
-        &.system {
-          color: #4caf50;
-        }
-      }
-  
-      .mat-list-item-meta {
-        color: rgba(0, 0, 0, 0.6);
-        font-size: 0.8rem;
-      }
-    }
-  
-    .empty-state {
-      text-align: center;
-      padding: 40px 0;
-      color: rgba(0, 0, 0, 0.5);
-  
-      mat-icon {
-        font-size: 48px;
-        width: 48px;
-        height: 48px;
-        margin-bottom: 16px;
-      }
-  
-      p {
-        margin: 0;
-        font-size: 1.1rem;
-      }
+  &.unread {
+    .notification-title{
+      font-weight: 700;
     }
   }
+}
+
+.notification-content {
+  flex: 1;
+  cursor: pointer;
+}
+
+.notification-title {
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+}
+
+.notification-message {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.notification-actions {
+  display: flex;
+  gap: 0.5rem;
+  
+  button {
+    color: #666;
+    
+    &:hover {
+      color: #3f51b5;
+    }
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem 0;
+  color: #888;
+  
+  .empty-icon {
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+    color: #ddd;
+    margin-bottom: 1rem;
+  }
+  
+  h3 {
+    margin: 0 0 0.5rem;
+    font-weight: 500;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+}

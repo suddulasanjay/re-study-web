@@ -23,7 +23,7 @@ export class AuthService {
   private _logout$ = new Subject<void>();
   private _storageService = inject(StorageService);
   private _router = inject(Router);
-  private path = 'Authorization';
+  private path = 'Authorization/';
   get logout$() {
     return this._logout$.asObservable();
   }
@@ -39,16 +39,12 @@ export class AuthService {
   }
 
   getRefreshToken(): Observable<any> {
-    let url = environment.endpoint + API.Token;
+    let url = environment.endpoint + this.path + API.Token;
     const body = {
       [authTokenParam.grantType]: ssoParamValue.grantTypeRefreshToken,
       [authTokenParam.grantValue]: this._storageService.getRefreshToken() ?? '',
     };
     return this._httpClientWithoutInterceptor.post<SsoToken>(url, body);
-  }
-
-  getUserInfo(): Observable<UserDto> {
-    return {} as any;
   }
 
   logout() {
@@ -59,7 +55,7 @@ export class AuthService {
   redirectToSSOLogoutPage() {
     const redirectUrl = location.origin + '/' + appRoute.validate;
     const url =
-      // environment.ssoLogoutAPI +
+      environment.ssoLogoutAPI +
       '?' + new HttpParams().set('redirectTo', redirectUrl).toString();
     window.location.href = url;
   }
