@@ -13,7 +13,7 @@
       }
     </button>
     <mat-menu #profileMenu="matMenu">
-      <button mat-menu-item (click)="logout()">
+      <button class="logout-button" mat-menu-item (click)="logout()">
         <mat-icon>logout</mat-icon>
         <span>{{isLoggedIn ? 'Logout' : 'Login'}}</span>
       </button>

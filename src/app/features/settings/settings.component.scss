@@ -1,46 +1,105 @@
-.search-bar {
-    padding: 1rem;
+.settings-page {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
-  
-  .section {
-    margin-top: 2rem;
-  
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0 1rem 1rem;
-    }
-  
-    h3 {
-      margin: 0;
-      color: #333;
-    }
-  }
-  
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+
+  .form-row {
+    display: flex;
     gap: 1rem;
-    padding: 0 1rem;
-  }
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
   
-  mat-card {
-    padding: 1rem;
-    cursor: pointer;
-    text-align: center;
-    transition: 0.2s ease-in-out;
-    border-radius: 12px;
-    background: #f9f9f9;
-  
-    mat-icon {
-      font-size: 40px;
-      color: #3f51b5;
+    .flex-item {
+      flex: 1;
+      min-width: 200px;
     }
   
-    &:hover {
-      background: #e0f7fa;
-      transform: scale(1.03);
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      padding-top: 0.8rem;
     }
   }
   
+  .button-row {
+    margin-top: 1rem;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+
+  h2, h3 {
+    color: var(--text-heading, #333);
+  }
+
+  .account-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  
+    .delete-btn {
+      background-color: #d32f2f !important; // Strong red
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  
+      &:hover {
+        background-color: #b71c1c !important;
+      }
+    }
+  }
+  
+}
+
+::ng-deep .mat-dialog-container {
+  padding: 24px !important;
+  max-width: 500px;
+  border-radius: 12px;
+}
+
+.dialog-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #d32f2f; // Red for critical action
+  margin-bottom: 8px;
+}
+
+.dialog-content {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cancel-btn {
+  font-weight: 500;
+}
+
+.delete-btn {
+  background-color: #d32f2f;
+  color: white;
+
+  &:hover {
+    background-color: #b71c1c;
+  }
+}
+

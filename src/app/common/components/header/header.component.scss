@@ -28,13 +28,21 @@
           border-radius: 10px;
           display: flex;
           align-items: center;
+          background-color: vars.$side-nav-bg;
+          color: vars.$side-nav-color;
           gap: 8px;
           cursor: pointer;
           border: none;
+          font-weight: 600;
           button{
             height: 20px !important;
           }
         }
       }
-         
-}
+      
+    }
+    .logout-button{
+      background-color: vars.$side-nav-bg !important;
+      color: vars.$side-nav-color !important;
+      width: 160px !important;
+    }

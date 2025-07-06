@@ -61,4 +61,14 @@ export class UserService {
     const url = environment.endpoint + this.path;
     return this._httpClient.get<UserDto>(url);
   }
+
+  updateUser(user: UserDto) {
+    const url = environment.endpoint + this.path;
+    return this._httpClient.put(url, user);
+  }
+
+  deleteUser(id: number) {
+    const url = environment.endpoint + this.path+`${id}`;
+    return this._httpClient.delete(url);
+  }
 }

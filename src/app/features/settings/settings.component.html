@@ -1,3 +1,93 @@
-<p>
-  settings works!
-</p>
+<div class="settings-page">
+  <!-- Profile Settings -->
+  <section>
+    <h3>Profile</h3>
+    <form [formGroup]="profileForm" (ngSubmit)="onSaveProfile()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" type="text" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" type="text" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" readonly />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Mobile</mat-label>
+        <input matInput formControlName="mobile" type="text" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="profileForm.invalid">
+        Save Profile
+      </button>
+    </form>
+  </section>
+
+  <!-- Preferences -->
+  <section>
+    <h3>Preferences</h3>
+    <form [formGroup]="preferenceForm" (ngSubmit)="onSavePreferences()">
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="flex-item" [subscriptSizing]="'dynamic'">
+          <mat-label>Repetition Gap (days)</mat-label>
+          <mat-select formControlName="repetitionGap">
+            <mat-option *ngFor="let d of [1, 2, 3, 5, 7]" [value]="d">{{ d }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-checkbox class="flex-item checkbox-item" formControlName="emailReminder">
+          Email Reminders
+        </mat-checkbox>
+  
+        <mat-checkbox class="flex-item checkbox-item" formControlName="dailySummary">
+          Daily Summary Notifications
+        </mat-checkbox>
+      </div>
+  
+      <div class="button-row">
+        <button mat-raised-button color="primary" type="submit">
+          Save Preferences
+        </button>
+      </div>
+    </form>
+  </section>  
+
+  <!-- Account -->
+<section>
+  <h3>Account</h3>
+  <div class="account-actions">
+    <button mat-stroked-button color="warn" (click)="logout()">Logout</button>
+    <button mat-raised-button class="delete-btn" (click)="confirmDeleteAccount()">Delete Account</button>
+  </div>
+</section>
+
+<ng-template #deleteDialog>
+  <h2 mat-dialog-title class="dialog-title">Confirm Account Deletion</h2>
+
+  <mat-dialog-content class="dialog-content">
+    <p>
+      Deleting your account will permanently remove all your saved study plans,
+      progress data, and preferences from our system. This action <strong>cannot be undone</strong>.
+    </p>
+    <p>
+      If you’re sure you want to proceed, click “Yes, Delete”. Otherwise, select “Cancel” to keep your account active.
+    </p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end" class="dialog-actions">
+    <button mat-button mat-dialog-close class="cancel-btn">Cancel</button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="true" class="delete-btn">
+      Yes, Delete My Account
+    </button>
+  </mat-dialog-actions>
+</ng-template>
+
+
+
+</div>
